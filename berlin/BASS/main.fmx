@@ -1,0 +1,118 @@
+object FormMain: TFormMain
+  Left = 742
+  Top = 225
+  Caption = 'Form22'
+  ClientHeight = 519
+  ClientWidth = 339
+  Position = Designed
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnActivate = FormActivate
+  Left = 742
+  Top = 225
+  DesignerMasterStyle = 3
+  object tbHeader: TRectangle
+    Align = Top
+    Fill.Color = xFF54769A
+    Sides = []
+    Size.Width = 339.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    object sbRefresh: TSpeedButton
+      Align = Right
+      IconTintColor = claWhite
+      Position.X = 291.000000000000000000
+      Position.Y = 1.000000000000000000
+      Size.Width = 48.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'refreshtoolbutton'
+      OnClick = sbRefreshClick
+    end
+    object lbTitle: TLabel
+      Align = Left
+      StyledSettings = [Family, Style]
+      Margins.Left = 10.000000000000000000
+      Position.X = 10.000000000000000000
+      Size.Width = 319.000000000000000000
+      Size.Height = 50.000000000000000000
+      Size.PlatformDefault = False
+      TextSettings.Font.Size = 20.000000000000000000
+      TextSettings.FontColor = claWhite
+      Text = 'Bass [demo]'
+    end
+  end
+  object lvFiles: TListView
+    ItemAppearanceClassName = 'TImageListItemBottomDetailRightButtonAppearance'
+    ItemEditAppearanceClassName = 'TImageListItemBottomDetailRightButtonShowCheckAppearance'
+    HeaderAppearanceClassName = 'TListHeaderObjects'
+    FooterAppearanceClassName = 'TListHeaderObjects'
+    Align = Client
+    Size.Width = 339.000000000000000000
+    Size.Height = 419.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 2
+    ItemAppearance.ItemHeight = 80
+    ItemAppearance.ItemEditHeight = 80
+    ItemAppearanceObjects.ItemObjects.Text.Font.Size = 11.000000000000000000
+    ItemAppearanceObjects.ItemObjects.Text.WordWrap = True
+    ItemAppearanceObjects.ItemObjects.TextButton.Font.Size = 10.000000000000000000
+    ItemAppearanceObjects.ItemObjects.TextButton.TextColor = claRed
+    ItemAppearanceObjects.ItemObjects.TextButton.TintColor = claBlack
+    ItemAppearanceObjects.ItemObjects.TextButton.PressedTextColor = claMaroon
+    ItemAppearanceObjects.ItemObjects.TextButton.Width = 90.000000000000000000
+    ItemAppearanceObjects.ItemObjects.TextButton.Visible = False
+    StyleLookup = 'listviewstyle'
+    CanSwipeDelete = False
+    OnItemClick = lvFilesItemClick
+    SelectionCrossfade = True
+  end
+  object tbControls: TRectangle
+    Align = Top
+    Fill.Color = xFF54769A
+    Position.Y = 50.000000000000000000
+    Sides = []
+    Size.Width = 339.000000000000000000
+    Size.Height = 50.000000000000000000
+    Size.PlatformDefault = False
+    object sbPlay: TSpeedButton
+      OnTap = sbPlayTap
+      Align = Left
+      IconTintColor = claWhite
+      Position.Y = 1.000000000000000000
+      Size.Width = 48.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'playtoolbutton'
+    end
+    object sbPause: TSpeedButton
+      OnTap = sbPauseTap
+      Align = Left
+      IconTintColor = claWhite
+      Position.X = 48.000000000000000000
+      Position.Y = 1.000000000000000000
+      Size.Width = 48.000000000000000000
+      Size.Height = 48.000000000000000000
+      Size.PlatformDefault = False
+      StyleLookup = 'pausetoolbutton'
+    end
+    object tbPosition: TTrackBar
+      Align = Client
+      CanParentFocus = True
+      Max = 0.000000000000000000
+      Orientation = Horizontal
+      Margins.Top = 9.000000000000000000
+      Size.Width = 243.000000000000000000
+      Size.Height = 32.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+    end
+  end
+  object tmPosition: TTimer
+    Enabled = False
+    OnTimer = tmPositionTimer
+    Left = 112
+    Top = 160
+  end
+end
