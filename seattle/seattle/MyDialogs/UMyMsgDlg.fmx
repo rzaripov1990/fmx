@@ -1,0 +1,67 @@
+inherited MyMsgDlg: TMyMsgDlg
+  Caption = 'fBaseDialog1'
+  ClientHeight = 541
+  Quality = HighQuality
+  DesignerMasterStyle = 0
+  inherited r2: TRectangle
+    Size.Height = 541.000000000000000000
+  end
+  inherited r1: TRectangle
+    Size.Width = 247.000000000000000000
+    Size.Height = 180.000000000000000000
+    object Layout1: TLayout
+      Align = Bottom
+      Padding.Left = 5.000000000000000000
+      Padding.Right = 5.000000000000000000
+      Padding.Bottom = 5.000000000000000000
+      Position.Y = 146.000000000000000000
+      Size.Width = 247.000000000000000000
+      Size.Height = 34.000000000000000000
+      Size.PlatformDefault = False
+      TabOrder = 0
+      object bOk: TSpeedButton
+        Align = Left
+        StyledSettings = [Family, Style, FontColor]
+        ModalResult = 1
+        Position.X = 5.000000000000000000
+        Size.Width = 105.000000000000000000
+        Size.Height = 29.000000000000000000
+        Size.PlatformDefault = False
+        Text = 'OK'
+        OnClick = bOkClick
+      end
+      object bCancel: TSpeedButton
+        Align = Right
+        StyledSettings = [Family, Style, FontColor]
+        ModalResult = 2
+        Position.X = 133.000000000000000000
+        Size.Width = 109.000000000000000000
+        Size.Height = 29.000000000000000000
+        Size.PlatformDefault = False
+        Text = #1054#1090#1084#1077#1085#1072
+      end
+    end
+    object Title: TText
+      Align = Top
+      AutoSize = True
+      Margins.Left = 5.000000000000000000
+      Margins.Right = 5.000000000000000000
+      Margins.Bottom = 20.000000000000000000
+      Position.X = 5.000000000000000000
+      Position.Y = 20.000000000000000000
+      Size.Width = 237.000000000000000000
+      Size.Height = 93.000000000000000000
+      Size.PlatformDefault = False
+    end
+    object Line1: TLine
+      Align = Bottom
+      LineType = Top
+      Position.Y = 145.000000000000000000
+      ShortenLine = True
+      Size.Width = 247.000000000000000000
+      Size.Height = 1.000000000000000000
+      Size.PlatformDefault = False
+      Stroke.Color = xFFEAEAEA
+    end
+  end
+end

@@ -1,0 +1,113 @@
+object FormMain: TFormMain
+  Left = 0
+  Top = 0
+  Caption = 'TMyDialogs'
+  ClientHeight = 480
+  ClientWidth = 360
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnShow = FormShow
+  DesignerMasterStyle = 3
+  object Button1: TButton
+    Anchors = [akLeft, akTop, akRight]
+    Position.X = 8.000000000000000000
+    Position.Y = 8.000000000000000000
+    Size.Width = 345.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 0
+    Text = 'InputDialog with TNotifyEvent'
+    OnClick = Button1Click
+  end
+  object Button2: TButton
+    Anchors = [akLeft, akTop, akRight]
+    Position.X = 8.000000000000000000
+    Position.Y = 48.000000000000000000
+    Size.Width = 345.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 1
+    Text = 'InputDialog with TThreadProcedure'
+    OnClick = Button2Click
+  end
+  object Button3: TButton
+    Anchors = [akLeft, akTop, akRight]
+    Position.X = 8.000000000000000000
+    Position.Y = 88.000000000000000000
+    Size.Width = 345.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 5
+    Text = 'MsgDialog'
+    OnClick = Button3Click
+  end
+  object Button4: TButton
+    Anchors = [akLeft, akTop, akRight]
+    Position.X = 7.000000000000000000
+    Position.Y = 128.000000000000000000
+    Size.Width = 345.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 4
+    Text = 'MsgDialog (Like Android 5.0+)'
+    OnClick = Button4Click
+  end
+  object Button5: TButton
+    Anchors = [akLeft, akTop, akRight]
+    Position.X = 7.000000000000000000
+    Position.Y = 168.000000000000000000
+    Size.Width = 345.000000000000000000
+    Size.Height = 33.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 3
+    Text = 'Toast'
+    OnClick = Button5Click
+  end
+  object Timer1: TTimer
+    Enabled = False
+    OnTimer = Timer1Timer
+    Left = 40
+    Top = 304
+  end
+  object CheckBox1: TCheckBox
+    Position.X = 16.000000000000000000
+    Position.Y = 216.000000000000000000
+    Size.Width = 320.000000000000000000
+    Size.Height = 19.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 10
+    Text = 'CheckBox1'
+    OnChange = CheckBox1Change
+  end
+  object CheckBox2: TCheckBox
+    Position.X = 16.000000000000000000
+    Position.Y = 240.000000000000000000
+    Size.Width = 320.000000000000000000
+    Size.Height = 19.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 9
+    Text = 'CheckBox1'
+    OnChange = CheckBox2Change
+  end
+  object CheckBox3: TCheckBox
+    Position.X = 16.000000000000000000
+    Position.Y = 264.000000000000000000
+    Size.Width = 320.000000000000000000
+    Size.Height = 19.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 8
+    Text = 'CheckBox1'
+    OnChange = CheckBox3Change
+  end
+  object CheckBox4: TCheckBox
+    Position.X = 16.000000000000000000
+    Position.Y = 288.000000000000000000
+    Size.Width = 320.000000000000000000
+    Size.Height = 19.000000000000000000
+    Size.PlatformDefault = False
+    TabOrder = 7
+    Text = 'CheckBox1'
+    OnChange = CheckBox4Change
+  end
+end
