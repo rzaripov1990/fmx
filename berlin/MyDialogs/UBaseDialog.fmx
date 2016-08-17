@@ -1,0 +1,35 @@
+object fBaseDialog: TfBaseDialog
+  Left = 0
+  Top = 0
+  BorderStyle = Single
+  Caption = 'Form3'
+  ClientHeight = 552
+  ClientWidth = 329
+  Transparency = True
+  FormFactor.Width = 320
+  FormFactor.Height = 480
+  FormFactor.Devices = [Desktop]
+  OnCreate = FormCreate
+  OnClose = FormClose
+  OnKeyDown = FormKeyDown
+  DesignerMasterStyle = 0
+  object r2: TRectangle
+    Align = Client
+    Fill.Color = claBlack
+    Opacity = 0.800000011920928900
+    Size.Width = 329.000000000000000000
+    Size.Height = 552.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Kind = None
+    OnClick = r2Click
+  end
+  object r1: TRectangle
+    Align = Center
+    Fill.Color = claWhite
+    Padding.Top = 20.000000000000000000
+    Size.Width = 251.000000000000000000
+    Size.Height = 204.000000000000000000
+    Size.PlatformDefault = False
+    Stroke.Color = x8CFFFFFF
+  end
+end
