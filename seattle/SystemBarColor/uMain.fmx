@@ -3,7 +3,7 @@ object FormMain: TFormMain
   Top = 0
   Caption = 'Status Bar Color'
   ClientHeight = 486
-  ClientWidth = 320
+  ClientWidth = 369
   Fill.Color = claRed
   Fill.Kind = Solid
   FormFactor.Width = 320
@@ -16,7 +16,7 @@ object FormMain: TFormMain
   object Content: TRectangle
     Align = Client
     Sides = []
-    Size.Width = 320.000000000000000000
+    Size.Width = 369.000000000000000000
     Size.Height = 486.000000000000000000
     Size.PlatformDefault = False
     object rNavBar: TRectangle
@@ -41,13 +41,13 @@ object FormMain: TFormMain
   end
   object ColorBox1: TColorBox
     Color = claRed
-    Position.X = 16.000000000000000000
-    Position.Y = 16.000000000000000000
+    Position.X = 24.000000000000000000
+    Position.Y = 48.000000000000000000
     TabOrder = 1
   end
   object chUseBlackNavBar: TCheckBox
-    Position.X = 80.000000000000000000
-    Position.Y = 16.000000000000000000
+    Position.X = 128.000000000000000000
+    Position.Y = 40.000000000000000000
     TabOrder = 2
     Text = 'Black NavBar'
     OnChange = chUseBlackNavBarChange

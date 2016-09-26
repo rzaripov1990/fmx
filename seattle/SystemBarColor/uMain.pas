@@ -6,8 +6,6 @@ unit uMain;
 
   Чтобы достичь нужного эффекта,
   все контролы нужно ложить в Content (TRectangle)
-
-  IDE -> Project -> Version Info -> theme = No TitleBar
 }
 
 interface
@@ -19,7 +17,8 @@ uses
 
 type
   TmyUI = record
-    StatusBar, NavBar, ScaleInt: Integer;
+    StatusBar, NavBar: Integer;
+    Scale: Integer;
     class function ContentColor: TAlphaColor; static;
   end;
 
@@ -38,7 +37,6 @@ type
     { Private declarations }
   public
     { Public declarations }
-    procedure myRealignContent;
   end;
 
 var
@@ -49,8 +47,7 @@ implementation
 
 {$R *.fmx}
 
-uses
-  FMX.StatusBar;
+uses FMX.StatusBar;
 
 { TmyUI }
 
@@ -65,7 +62,7 @@ end;
 procedure TFormMain.chUseBlackNavBarChange(Sender: TObject);
 begin
   rNavBar.Visible := chUseBlackNavBar.IsChecked;
-  myRealignContent;
+  FormResize(nil);
 end;
 
 procedure TFormMain.ColorPanel1Change(Sender: TObject);
@@ -83,29 +80,6 @@ begin
 end;
 
 procedure TFormMain.FormResize(Sender: TObject);
-begin
-  myRealignContent;
-end;
-
-procedure TFormMain.FormShow(Sender: TObject);
-begin
-  FormActivate(nil);
-  StatusBarGetBounds(myUI.StatusBar, myUI.NavBar, myUI.ScaleInt); // получаем отступы
-
-  StatusBarSetColor(Fill.Color);
-  { на андроиде это работает так:
-    //  форма становится на полные размеры (типа FullScreen режим)
-    //  статус бар становится полупрозрачным, поэтому мы видим часть нашей формы
-    //  и если эту часть формы покрасить, то достигается нужный эффект
-  }
-  { на айос это работает так:
-    // статус бар принимает цвет формы, но если в run-time менять цвет, то он не меняется сразу
-    // поэтому нужно вызвать снова этот метод, для моментальной смены цвета
-  }
-  myRealignContent;
-end;
-
-procedure TFormMain.myRealignContent;
 var
   aVert: boolean;
 begin
@@ -126,19 +100,39 @@ begin
   end
   else
   begin
-    // в горизонтальной ориентции, отспут будет справа
-    Content.Margins.Left := 0;
-    Content.Margins.Top := myUI.StatusBar; // оступ сверху, для андроид 5.0+
-    if chUseBlackNavBar.IsChecked then
+    if not NavBarOrientationBottom then
     begin
-      rNavBar.Align := TAlignLayout.MostRight;
-      rNavBar.Width := myUI.NavBar;
-      Content.Margins.Right := 0; // убираем отступ
-    end
-    else
-      Content.Margins.Right := myUI.NavBar; // отспут справа, для андроид 5.0+ (при наличии наэкранных кнопок)
-    Content.Margins.Bottom := 0;
+      // в горизонтальной ориентции, отспут будет справа
+      Content.Margins.Left := 0;
+      Content.Margins.Top := myUI.StatusBar; // оступ сверху, для андроид 5.0+
+      if chUseBlackNavBar.IsChecked then
+      begin
+        rNavBar.Align := TAlignLayout.MostRight;
+        rNavBar.Width := myUI.NavBar;
+        Content.Margins.Right := 0; // убираем отступ
+      end
+      else
+        Content.Margins.Right := myUI.NavBar; // отспут справа, для андроид 5.0+ (при наличии наэкранных кнопок)
+      Content.Margins.Bottom := 0;
+    end;
   end;
+end;
+
+procedure TFormMain.FormShow(Sender: TObject);
+begin
+  FormActivate(nil);
+  StatusBarGetBounds(myUI.StatusBar, myUI.NavBar, myUI.Scale); // получаем отступы
+
+  StatusBarSetColor(Fill.Color);
+  { на андроиде это работает так:
+    //  форма становится на полные размеры (типа FullScreen режим)
+    //  статус бар становится полупрозрачным, поэтому мы видим часть нашей формы
+    //  и если эту часть формы покрасить, то достигается нужный эффект
+  }
+  { на айос это работает так:
+    // статус бар принимает цвет формы, но если в run-time менять цвет, то он не меняется сразу
+    // поэтому нужно вызвать снова этот метод, для моментальной смены цвета
+  }
 end;
 
 end.
