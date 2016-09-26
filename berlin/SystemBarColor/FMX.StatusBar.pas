@@ -10,7 +10,7 @@ unit FMX.StatusBar;
 interface
 
 uses
-  System.UITypes, FMX.Platform
+  System.UITypes, FMX.Dialogs, FMX.Platform
 {$IFDEF ANDROID} ,
   Androidapi.JNI.GraphicsContentViewText, Androidapi.JNIBridge, Androidapi.Helpers,
   Androidapi.JNI.JavaTypes, Androidapi.JNI.App, Androidapi.JNI.Util, FMX.Platform.Android, FMX.Helpers.Android
@@ -46,8 +46,9 @@ function GetWindowExt: JWindowExt;
 {$ENDIF}
 function Darker(color: TAlphaColor; Percent: Byte): TAlphaColor;
 
-procedure StatusBarGetBounds(out StatusBar, NavigationBar, ScaleInt{, NavBarInt}: Integer);
+procedure StatusBarGetBounds(out StatusBar, NavigationBar, ScaleInt { , NavBarInt } : Integer);
 procedure StatusBarSetColor(const aColor: TAlphaColor);
+function NavBarOrientationBottom: boolean;
 
 implementation
 
@@ -105,6 +106,27 @@ begin
 end;
 {$ENDIF}
 
+function NavBarOrientationBottom: boolean;
+{$IFDEF ANDROID}
+var
+  visibleFrame: JRect;
+  Window: JWindowExt;
+  metrics: JDisplayMetrics;
+{$ENDIF}
+begin
+  Result := false;
+{$IFDEF ANDROID}
+  visibleFrame := TJRect.Create;
+  Window := GetWindowExt;
+  Window.getDecorView.getWindowVisibleDisplayFrame(visibleFrame);
+
+  metrics := TJDisplayMetrics.Create;
+  Window.getWindowManager.getDefaultDisplay.getRealMetrics(metrics);
+  Result := metrics.widthPixels = visibleFrame.right;
+
+{$ENDIF}
+end;
+
 function hasNavbar(out navBarHeight: Integer): boolean;
 // uses Androidapi.JNI.Util,
 {$IFDEF ANDROID}
@@ -129,7 +151,7 @@ begin
   realSize.y := metrics.heightPixels;
 
   Window.getWindowManager.getDefaultDisplay.getSize(screenSize);
-  if realSize.x <> screenSize.y then
+  if realSize.y <> screenSize.y then
   begin
     difference := realSize.y - screenSize.y;
     resourceID := TAndroidHelper.Activity.getResources.getIdentifier(StringToJString('navigation_bar_height'),
@@ -143,7 +165,7 @@ begin
 {$ENDIF}
 end;
 
-procedure StatusBarGetBounds(out StatusBar, NavigationBar, ScaleInt{, NavBarInt}: Integer);
+procedure StatusBarGetBounds(out StatusBar, NavigationBar, ScaleInt { , NavBarInt } : Integer);
 {$IFDEF ANDROID}
 var
   // KeyCharacterMap: JKeyCharacterMap;
@@ -169,7 +191,7 @@ begin
 
     if hasNavbar(NavigationBar) then
     begin
-//      NavBarInt := NavigationBar;
+      // NavBarInt := NavigationBar;
       NavigationBar := Trunc(NavigationBar / sScale);
     end;
   end;
